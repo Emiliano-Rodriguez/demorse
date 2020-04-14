@@ -1,6 +1,3 @@
-
-
-
 # Dictionary representing the morse code chart
 # Dictionaries store data in this form: { 'Key': 'Value'}
 DICT = { 'A':'.-', 'B':'-...',
@@ -19,34 +16,21 @@ DICT = { 'A':'.-', 'B':'-...',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
                     '(':'-.--.', ')':'-.--.-'}
 
-# Accessing dictionary key/value pairs using a list
-print("############# DICTIONARY ##############")
-print(DICT)
-print("\n\n")
-
 morkeys = list(DICT)
 morvals = list(DICT.values())
 
-#printing list of keys
-print("############# LIST OF KEYS ##############")
-print(morkeys)
-print("\n\n")
+def encrypt(message):
+    my_cipher = ''
+    for myletter in message:
+        if myletter != ' ':
+            my_cipher += DICT[myletter] + ' '
+        else:
+            my_cipher += ' '
+        return my_cipher
 
-
-#printing list of values
-print("############# LIST OF VALUES ##############")
-print(morvals)
-print("\n\n")
-
-print("############# KEY INDEX ##############")
-# through indexing keys or values
-print("Key: " + morkeys[0])
-print("\n\n")
-
-print("############# VALUE INDEX ##############")
-print("Value: " + morvals[0])
-print("\n\n")
-
-print("############# EXAMPLE OF ACCESS DICT['A'] ##############")
-print("A : " + DICT['A'])
-print("\n\n")
+def main():
+    my_message = "SIMP"
+    output = encrypt(my_message.upper())
+    print(my_message + ": " + output)
+if __name__ == '__main__':
+    main()
