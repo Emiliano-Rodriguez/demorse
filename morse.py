@@ -1,6 +1,7 @@
 import time
 # Dictionary representing the morse code chart
 # Dictionaries store data in this form: { 'Key': 'Value'}
+morse = []
 DICT = { 'A':'.-', 'B':'-...',
                     'C':'-.-.', 'D':'-..', 'E':'.',
                     'F':'..-.', 'G':'--.', 'H':'....',
@@ -15,7 +16,7 @@ DICT = { 'A':'.-', 'B':'-...',
                     '7':'--...', '8':'---..', '9':'----.',
                     '0':'-----', ', ':'--..--', '.':'.-.-.-',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
-                    '(':'-.--.', ')':'-.--.-'}
+                    '(':'-.--.',' ': ' ', ')':'-.--.-'}
 
 # Accessing dictionary key/value pairs using a list
 print("############# DICTIONARY ##############")
@@ -25,29 +26,29 @@ print("\n\n")
 morkeys = list(DICT)
 morvals = list(DICT.values())
 
-#printing list of keys
-print("############# LIST OF KEYS ##############")
-print(morkeys)
-print("\n\n")
-
-
-#printing list of values
-print("############# LIST OF VALUES ##############")
-print(morvals)
-print("\n\n")
-
-print("############# KEY INDEX ##############")
-# through indexing keys or values
-print("Key: " + morkeys[0])
-print("\n\n")
-
-print("############# VALUE INDEX ##############")
-print("Value: " + morvals[0])
-print("\n\n")
-
-print("############# EXAMPLE OF ACCESS DICT['A'] ##############")
-print("A : " + DICT['A'])
-print("\n\n")
+##printing list of keys
+#print("############# LIST OF KEYS ##############")
+#print(morkeys)
+#print("\n\n")
+#
+#
+##printing list of values
+#print("############# LIST OF VALUES ##############")
+#print(morvals)
+#print("\n\n")
+#
+#print("############# KEY INDEX ##############")
+## through indexing keys or values
+#print("Key: " + morkeys[0])
+#print("\n\n")
+#
+#print("############# VALUE INDEX ##############")
+#print("Value: " + morvals[0])
+#print("\n\n")
+#
+#print("############# EXAMPLE OF ACCESS DICT['A'] ##############")
+#print("A : " + DICT['A'])
+#print("\n\n")
 
 
 
@@ -65,17 +66,30 @@ print("\n\n")
 #- repeat process until another button is pressed or app is exited
 
 print("Hello <user>, welcome to the morse translator gadget tool thing, \n")
-time.sleep(2.5)
+time.sleep(.5)
 print("what are you trying to do today?")
-time.sleep(2)
-print("(a) translate ENGLISH to MORSE \nOR\n(b) translate MORSE to ENGLISH\n")
-user_in = input("type a or b and press enter: ")
-if(user_in == 'a'):
-    print("very well, guess you don't know much morse. Let's see if you even know english.")
-    word = input("Type a sentence you want me to translate: ")
-    print("so.. you want me to translate '"+word+"'?\nfine, but first, let me think about how to write this program first.")
-elif(user_in == 'b'):
-    print("Please. You can barely speak english, lets start with option a. restart the program and try again.")
-else:
-    print("invalid answer, seriously? there's only two options.. try again")
+time.sleep(.5)
 
+while True: 
+    
+    print("\n(a) translate ENGLISH to MORSE \nOR\n(b) translate MORSE to ENGLISH (ctrl-z to exit)\n")
+    user_in = input("type a or b and press enter: ")
+    if(user_in == 'a'):
+        print("very well, guess you don't know much morse. Let's see if you even know english.")
+        word = input("Type a sentence you want me to translate: ")
+        print("so.. you want me to translate '"+word+"'?\nfine, but first, let me think about how to write this program first.")
+        sentence = list(word.upper())
+        sen_len = len(sentence)
+        print(sentence)
+          
+        for i in range(sen_len):
+            morse.append(DICT[sentence[i]])
+        print(morse) 
+        translation = ''.join(morse)
+        print("\n\nTranslated word: ")
+        print(translation)
+    elif(user_in == 'b'):
+        print("Please. You can barely speak english, lets start with option a. restart the program and try again.")
+    else:
+        print("invalid answer, seriously? there's only two options.. try again")
+    time.sleep(1)
