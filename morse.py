@@ -42,6 +42,7 @@ print("\n\n")
 
 morkeys = list(DICT)
 morvals = list(DICT.values())
+flag = False
 
 ##printing list of keys
 #print("############# LIST OF KEYS ##############")
@@ -89,38 +90,42 @@ time.sleep(.5)
 
 while True: 
     
-    print("\n(a) translate ENGLISH to MORSE \nOR\n(b) translate MORSE to ENGLISH (ctrl-z to exit)\n")
+    print("\n(a) translate ENGLISH to MORSE\n(b) translate MORSE to ENGLISH (ctrl-z to exit)\n")
     user_in = input("type a or b and press enter: ")
     if(user_in == 'a'):
         print("very well, guess you don't know much morse. Let's see if you even know english.")
-        word = input("Type a sentence you want me to translate: ")
-        print("so.. you want me to translate '"+word+"'?\nfine, but first, let me think about how to write this program first.")
-        sentence = list(word.upper())
-        sen_len = len(sentence)
-        print(sentence)
-          
-        for i in range(sen_len):
-            morse.append(DICT[sentence[i]])
-        print(morse) 
-        translation = ''.join(morse)
-        print("\n\nTranslated word: ")
-        print(translation)
+        while flag == False:
+            word = input("Type a sentence you want me to translate ('q' to quit to menu): ")
+            sentence = list(word.upper())
+            sen_len = len(sentence)
+            
+            if(word == 'q'):
+                flag == True
+                break
+            
+            for i in range(sen_len):
+                morse.append(DICT[sentence[i]])
+            print(morse) 
+            translation = ''.join(morse)
+            print("\n\nTranslated word: ")
+            print(translation)
+            morse = []
     elif(user_in == 'b'):
         print("Please. You can barely speak english.")
         opt_b = input("But alright, what level of understanding do you have? \n1.) single Letter\n2.) Word\n3.) Sentence\nAcceptable answers [1,2,3]: ")
         if (opt_b == "1"):
-            print("Letter")
-
-
-            print("very well, guess you don't know much morse. Let's see if you even know english.")
-            letter = input("Type a letter you want me to translate: ")
-            if(letter in DICT_B):
-                translation = DICT_B[letter]
-                print("\n\nTranslated word: ")
-                print(translation)
-            else:
-                print("That's not a letter")
-
+            while flag == False:
+                letter = input("Type a letter you want me to translate ('q' to quit to menu): ")
+                if(letter in DICT_B):
+                    translation = DICT_B[letter]
+                    print("\n\nTranslated word: ")
+                    print(translation)
+                elif(letter == "q"):
+                    flag == True
+                    break
+                else:
+                    print("That's not a letter, Try again.")
+    
 
         elif(opt_b == "2"):
             print("Word")
@@ -130,4 +135,5 @@ while True:
             print("invalid answer")
     else:
         print("invalid answer, seriously? there's only two options.. try again")
+        flag = False
     time.sleep(1)
