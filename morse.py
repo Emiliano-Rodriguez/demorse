@@ -111,8 +111,8 @@ while True:
             print(translation)
             morse = []
     elif(user_in == 'b'):
-        print("Please. You can barely speak english.")
         opt_b = input("But alright, what level of understanding do you have? \n1.) single Letter\n2.) Word\n3.) Sentence\nAcceptable answers [1,2,3]: ")
+
         if (opt_b == "1"):
             while flag == False:
                 letter = input("Type a letter you want me to translate ('q' to quit to menu): ")
@@ -128,8 +128,22 @@ while True:
     
 
         elif(opt_b == "2"):
-            print("Word")
-        elif(opt_b == "3"):
+            while flag == False:
+                word = input("Type a word you want me to translate ('q' to quit to menu): ")
+                if(word == 'q'):
+                    flag == True
+                    break
+          #TODO: Have to figure out how to do translation of word logic
+          #      for i in word:
+          #          if(i in DICT_B):
+          #              translation = DICT_B[letter]
+          #              print("\n\nTranslated word: ")
+          #              print(translation)
+          #          else:
+          #              print(str(i)+" is invalid, try again")
+                else:
+                    print("That's not a valid sequence of letters, Try again.")
+         elif(opt_b == "3"):
             print("Sentence")
         else:
             print("invalid answer")
