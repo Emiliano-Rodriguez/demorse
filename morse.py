@@ -18,6 +18,23 @@ DICT = { 'A':'.-', 'B':'-...',
                     '?':'..--..', '/':'-..-.', '-':'-....-',
                     '(':'-.--.',' ': ' ', ')':'-.--.-'}
 
+
+DICT_B = { '.-':'a', '-...':'b',
+                    '-.-.':'c', '-..':'d', '.':'e',
+                    '..-.':'f', '--.':'g', '....':'h',
+                    '..':'i', '.---':'j', '-.-':'k',
+                    '.-..':'l', '--':'m', '-.':'n',
+                    '---':'o', '.--.':'p', '--.-':'q',
+                    '.-.':'r', '...':'s', '-':'t',
+                    '..-':'u', '...-':'v', '.--':'w',
+                    '-..-':'x', '-.--':'y', '--..':'z',
+                    '.----':'1', '..---':'2', '...--':'3',
+                    '....-':'4', '.....':'5', '-....':'6',
+                    '--...':'7', '---..':'8', '----.':'9',
+                    '-----':'0', '--..--':', ', '.-.-.-':'.',
+                    '..--..':'?', '-..-.':'/', '-....-':'-',
+                    '-.--.':'(',' ': ' ', '-.--.-':')'}
+
 # Accessing dictionary key/value pairs using a list
 print("############# DICTIONARY ##############")
 print(DICT)
@@ -89,7 +106,28 @@ while True:
         print("\n\nTranslated word: ")
         print(translation)
     elif(user_in == 'b'):
-        print("Please. You can barely speak english, lets start with option a. restart the program and try again.")
+        print("Please. You can barely speak english.")
+        opt_b = input("But alright, what level of understanding do you have? \n1.) single Letter\n2.) Word\n3.) Sentence\nAcceptable answers [1,2,3]: ")
+        if (opt_b == "1"):
+            print("Letter")
+
+
+            print("very well, guess you don't know much morse. Let's see if you even know english.")
+            letter = input("Type a letter you want me to translate: ")
+            if(letter in DICT_B):
+                translation = DICT_B[letter]
+                print("\n\nTranslated word: ")
+                print(translation)
+            else:
+                print("That's not a letter")
+
+
+        elif(opt_b == "2"):
+            print("Word")
+        elif(opt_b == "3"):
+            print("Sentence")
+        else:
+            print("invalid answer")
     else:
         print("invalid answer, seriously? there's only two options.. try again")
     time.sleep(1)
