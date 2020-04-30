@@ -128,22 +128,43 @@ while True:
     
 
         elif(opt_b == "2"):
+            decipher = ''
+            mycitext = ''
             while flag == False:
-                word = input("Type a word you want me to translate ('q' to quit to menu): ")
+                word = input("Type a word you want me to translate, use spaces between letters ('q' to quit to menu): ")
                 if(word == 'q'):
                     flag == True
                     break
-          #TODO: Have to figure out how to do translation of word logic
-          #      for i in word:
-          #          if(i in DICT_B):
-          #              translation = DICT_B[letter]
-          #              print("\n\nTranslated word: ")
-          #              print(translation)
-          #          else:
-          #              print(str(i)+" is invalid, try again")
-                else:
-                    print("That's not a valid sequence of letters, Try again.")
-         elif(opt_b == "3"):
+
+                   # checks for space
+                #if len(word.split()) > 1:
+                #    print("thats more than one word.")
+                #    break
+
+                word += ' '
+                decipher = ''
+                mycitext = ''
+                for myletter in word:
+                   # checks for space
+                   if (myletter != ' '):
+                      i = 0
+                      mycitext += myletter
+                   else:
+                      i += 1
+                      if i == 2 :
+                         decipher += ' '
+                      else:
+                         try:
+                             decipher += list(DICT.keys())[list(DICT.values()).index(mycitext)]
+                             mycitext = ''
+                         except: 
+                             print("wrong sequence entry, try again.")
+                             continue
+             
+                print(decipher)
+                #else:
+                #    print("That's not a valid sequence of letters, Try again.")
+        elif(opt_b == "3"):
             print("Sentence")
         else:
             print("invalid answer")
